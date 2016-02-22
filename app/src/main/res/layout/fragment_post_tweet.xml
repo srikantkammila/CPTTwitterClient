@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context="com.codepath.apps.restclienttemplate.fragment.PostTweetFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etTweet"
+        android:maxLength="140"
+        android:maxLines="10"
+        android:lines="10"
+        android:gravity="top|left"
+        android:inputType="textCapSentences|textMultiLine"
+        android:scrollbars="none"
+        android:background="@drawable/text_border"
+        android:textCursorDrawable="@drawable/color_cursor"
+        android:padding="10dp"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tweet"
+        android:id="@+id/tweetBtn"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/etTweet"
+        android:padding="10dp"
+        android:textSize="15dp"
+        android:drawableLeft="@drawable/twitter_blue"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvCharCount"
+        android:layout_below="@id/etTweet"
+        android:text="140"
+        android:layout_toLeftOf="@id/tweetBtn"
+        android:layout_alignTop="@id/tweetBtn"
+        android:layout_marginTop="13dp"
+        android:layout_marginRight="10dp"
+        />
+
+
+
+</RelativeLayout>
