@@ -53,7 +53,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.Timeli
         Tweet tweet = tweets.get(position);
 
         // Set item views based on the data model
-        Tweet.Linkfiy(tweet.getText(), holder.tvTweetText);
+        holder.tvTweetText.setText(tweet.getText());
 
         holder.userName.setText(tweet.getUser().getName());
         holder.screenName.setText("@" + tweet.getUser().getScreenName());
@@ -64,10 +64,6 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.Timeli
         if (media != null && media.getMediaUrl() != null && media.getType().equals("photo")) {
             if (media.getType().equals("photo")) {
                 Picasso.with(holder.ivMedia.getContext()).load(mediaUrl).into(holder.ivMedia);
-            } else if (media.getType().equals("video")) {
-                holder.ivMedia.setVisibility(View.GONE);
-
-                holder.vMedia.setVisibility(View.VISIBLE);
             }
         }
         Picasso.with(holder.ivProfile.getContext()).load(tweet.getUser().getProfileImageUrl()).into(holder.ivProfile);

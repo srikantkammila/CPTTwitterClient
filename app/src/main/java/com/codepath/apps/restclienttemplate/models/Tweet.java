@@ -1,19 +1,13 @@
 
 package com.codepath.apps.restclienttemplate.models;
 
-import android.text.SpannableString;
-import android.text.Spanned;
 import android.text.format.DateUtils;
-import android.text.method.LinkMovementMethod;
-import android.util.Patterns;
-import android.widget.TextView;
 
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 import com.activeandroid.query.From;
 import com.activeandroid.query.Select;
-import com.codepath.apps.restclienttemplate.utils.TagClickableSpan;
 import com.google.gson.annotations.SerializedName;
 
 import org.joda.time.DateTime;
@@ -27,8 +21,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.annotation.Generated;
 
@@ -518,45 +510,6 @@ public class Tweet extends Model{
         }
 
         return sl.execute();
-    }
-
-    public  static void Linkfiy(String a, TextView textView) {
-
-        Pattern urlPattern = Patterns.WEB_URL;
-        Pattern mentionPattern = Pattern.compile("(@[A-Za-z0-9_-]+)");
-        Pattern hashtagPattern = Pattern.compile("#(\\w+|\\W+)");
-
-        Matcher o = hashtagPattern.matcher(a);
-        Matcher mention = mentionPattern.matcher(a);
-        Matcher weblink = urlPattern.matcher(a);
-
-
-        SpannableString spannableString = new SpannableString(a);
-        //#hashtags
-
-        while (o.find()) {
-
-            spannableString.setSpan(new TagClickableSpan(o.group(),
-                            0), o.start(), o.end(),
-                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        }
-
-        // --- @mention
-        while (mention.find()) {
-            spannableString.setSpan(
-                    new TagClickableSpan(mention.group(), 1), mention.start(), mention.end(),
-                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        }
-        //@weblink
-        while (weblink.find()) {
-            spannableString.setSpan(
-                    new TagClickableSpan(weblink.group(), 2), weblink.start(), weblink.end(),
-                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-        }
-
-        textView.setText(spannableString);
-        textView.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
 

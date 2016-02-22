@@ -32,7 +32,6 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -110,11 +109,6 @@ public class TimelineActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 Log.d(LOG_TAG, response.toString());
-                try {
-                    System.out.println(response.toString(2));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
                 Type collectionType = new TypeToken<List<Tweet>>() {
                 }.getType();
                 GsonBuilder gsonBuilder = new GsonBuilder();
